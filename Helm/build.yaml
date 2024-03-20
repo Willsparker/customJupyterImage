@@ -1,0 +1,27 @@
+kind: BuidlfConfig
+apiVersion: build.openshift.io/v1
+metadata:
+  name: py39full
+  namespace: rhods-notebooks
+  labels:
+    app: rhods
+    app.belongs.to: AdvancedAnalytics
+spec:
+  nodeSelector: null
+  output:
+    to: 
+      kind: ImageStreamTag
+      name: 'py39full:@latest'
+  resources: {}
+  strategy:
+    type: Docker
+    dockerStrategy:
+      dockerfilePath: dockerfile 
+  postCommit: {}
+  source:
+    type: Git
+    git:
+      uri: 'https://github.com/Willsparker/customJupyterImage.git'
+      sourceSecret:
+        name: gitsecret 
+  runPolicy: Serial 

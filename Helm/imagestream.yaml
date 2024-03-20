@@ -1,0 +1,11 @@
+kind: ImageStream 
+apiVersion: image.openshift.io/v1 
+metadata: 
+  name: py39full 
+  labels: 
+    app: py39full 
+    app.belongs.to: AdvancedAnalytics
+spec:
+  lookupPolicy:
+    local: true 
+    
